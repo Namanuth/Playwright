@@ -5,7 +5,7 @@ from playwright.sync_api import expect
 
 def test_e2e_checkout(page):
   login = LoginPage(page)
-  invertory = InvertoryPage(page)
+  inventory = InvertoryPage(page)
   checkout = CheckoutPage(page)
 
   # 1: Login flow
@@ -13,12 +13,15 @@ def test_e2e_checkout(page):
   login.login("standard_user", "secret_sauce")
 
   # 2: Add to cart flow
-  invertory.add_first_product_to_cart()
-  invertory.sort("hilo")
-  invertory.add_first_product_to_cart()
-  invertory.sort("za")
-  invertory.add_first_product_to_cart()
-  invertory.go_to_cart()
+  inventory.add_first_product_to_cart()
+  inventory.goBack()
+  inventory.sort("hilo")
+  inventory.add_first_product_to_cart()
+  inventory.goBack()
+  inventory.sort("za")
+  inventory.add_first_product_to_cart()
+  inventory.goBack()
+  inventory.go_to_cart()
 
   # 3: Check if it comes on cart or not
   expect(page).to_have_url("https://www.saucedemo.com/v1/cart.html")
