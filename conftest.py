@@ -1,5 +1,10 @@
 import pytest
 from playwright.sync_api import sync_playwright
+from utils.config_reader import load_config
+
+@pytest.fixture(scope="session")
+def config():
+  return load_config()
 
 @pytest.fixture(scope="session")
 def browser_context():

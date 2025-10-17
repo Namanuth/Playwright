@@ -1,0 +1,8 @@
+# --- Testing Framework ---
+pytest
+pytest-xdist        # parallel test execution
+pytest-html         # HTML report generation
+pytest-rerunfailures  # retry flaky tests
+
+# --- Automation ---
+playwright==1.49.0  # (or the latest stable version)
