@@ -21,8 +21,7 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Run Playwright tests
-        run: |
-          mkdir -p screenshots
+        run: |          
           pytest -n 1 --html=report.html --self-contained-html || true
 
       - name: Upload HTML report
@@ -31,8 +30,8 @@ jobs:
           name: report
           path: report.html
 
-      - name: Upload HTML report as artifact
+      - name: Upload screenshots as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: test-report
-          path: report.html
+          name: screenshots
+          path: screenshots/
