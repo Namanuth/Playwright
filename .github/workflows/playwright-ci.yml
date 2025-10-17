@@ -28,3 +28,9 @@ jobs:
         with:
           name: report
           path: report.html
+
+      - name: Upload screenshots as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: screenshots/

@@ -24,6 +24,7 @@ def test_e2e_checkout(page, user_type):
       pytest.fail(f"Login succeeded unexpectedly for {creds["username"]}.")
   elif not result and user_type == 'invalid':
       print(f"Expected failure handled for {creds["username"]}.")
+      pytest.xfail(f"Expected failure: {creds["username"]} cannot login")
       pytest.skip("Skipping further steps due to invalid credentials.")
 
   page.screenshot(path="screenshots/step1_login.png")
